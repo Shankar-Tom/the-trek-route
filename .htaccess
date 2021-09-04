@@ -1,0 +1,28 @@
+ErrorDocument 404 "<h1>Sorry Page Not Available</h1>"
+Options -indexes
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# This domain inherits the “PHP” package.
+# php -- END cPanel-generated handler, do not edit
+RewriteEngine on
+#SSl code
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP:X-Forwarded-SSL} !on
+RewriteCond %{HTTP_HOST} ^thetrekroute\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.thetrekroute\.com$
+RewriteRule ^/?$ "https\:\/\/thetrekroute\.com\/" [R=301,L]
+#remove extension from url
+#php
+
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^ %{REQUEST_URI}.php [NC,L]
+#html
+
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^ %{REQUEST_URI}.html [NC,L]
+#change index
+DirectoryIndex home.php
+#Friendly URL
+
+#error document
+
